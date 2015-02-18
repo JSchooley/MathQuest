@@ -4,6 +4,7 @@ public class Combat {
 	private static Character playerCharacter;
 	private static Monster enemyMonster;
 	private boolean isPlayerTurn;
+	private boolean isCorrectAnswer;
 	private Scanner input;
 	private String playerChoice;
 	
@@ -42,14 +43,26 @@ public class Combat {
 	private String playerTurn(){
 		while(isPlayerTurn && enemyMonster.getCurrentHealth() > 0){
 			System.out.println("Attack or potion");
-			//does math equation for character's attack or potion
+			
+			//player chooses to attack or drink a potion
 			playerChoice = input.nextLine();
+			
 			if(playerChoice.equalsIgnoreCase("attack")){
-				//character deals damage
+				
+				//math equation displayed
+				isCorrectAnswer = true;
+				
+				if(isCorrectAnswer){
+					//character deals damage
+					enemyMonster.takeDamage(playerCharacter.getStrength());
+				}
 			}
+			
 			if(playerChoice.equalsIgnoreCase("potion")){
 				//character drinks potion
+				
 			}
+			
 			isPlayerTurn = false;
 		}
 		
@@ -61,6 +74,9 @@ public class Combat {
 			System.out.println("Monster is attacking");
 			//does math equation for monster attack that character can defend
 			
+			if(!isCorrectAnswer){
+				playerCharacter.takeDamage(enemyMonster.getDamage());
+			}
 			isPlayerTurn = true;
 		}
 		

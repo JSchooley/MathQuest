@@ -67,7 +67,11 @@ public class Monster {
 		experience = e;
 	}
 	
-	//takes the strength of the character 
+	public int getDamage(){
+		return (int) damage;
+	}
+	
+	//takes the damage from the character as input 
 	public int takeDamage(int s){
 		return currentHealth = currentHealth - s;
 	}

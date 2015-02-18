@@ -8,6 +8,7 @@ public class Character {
 	private int level;
 	private int armor;
 	private double gold;
+	private int damage;
 	private int speed;
 	
 	public Character() {
@@ -56,16 +57,6 @@ public class Character {
 		return gold;
 	}
 	
-	public void gainExperience(int c){
-		currentExperience = currentExperience + c;
-		if(currentExperience >= maxExperience){
-			level = level++;
-			currentExperience = currentExperience - maxExperience;
-			maxExperience = maxExperience*2;
-		}
-	}
-	
-	
 	public void addStrenght(int s){
 		strength = strength + s;
 	}
@@ -76,6 +67,21 @@ public class Character {
 	
 	public void setArmor(int a){
 		armor = armor + a;
+	}
+	
+	public void gainExperience(int c){
+		currentExperience = currentExperience + c;
+		if(currentExperience >= maxExperience){
+			level = level++;
+			currentExperience = currentExperience - maxExperience;
+			maxExperience = maxExperience*2;
+		}
+	}
+	
+	//takes the damage of the monster
+	public String takeDamage(int d){
+		 currentHealth = currentHealth - d;
+		return "" + d + "";
 	}
 	
 	public String toString(){
